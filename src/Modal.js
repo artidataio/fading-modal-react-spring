@@ -1,14 +1,14 @@
 import React from "react";
 import { useTransition, animated } from "@react-spring/web";
 
-function Modal({ isShow, onCancel }) {
-  const animContainer = useTransition(isShow, {
+function Modal({ open, onClose }) {
+  const animContainer = useTransition(open, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 }
   });
 
-  const animBackdrop = useTransition(isShow, {
+  const animBackdrop = useTransition(open, {
     from: { opacity: 0 },
     enter: { opacity: 0.4 },
     leave: { opacity: 0 }
@@ -20,7 +20,7 @@ function Modal({ isShow, onCancel }) {
         return item ? (
           <animated.div
             style={{ opacity }}
-            onClick={onCancel}
+            onClick={onClose}
             className="modal-backdrop"
           />
         ) : null;
@@ -29,7 +29,7 @@ function Modal({ isShow, onCancel }) {
         return item ? (
           <animated.div style={{ opacity }} className="modal-container">
             <h2>Hello</h2>
-            <button type="button" onClick={onCancel}>
+            <button type="button" onClick={onClose}>
               CLOSE
             </button>
           </animated.div>

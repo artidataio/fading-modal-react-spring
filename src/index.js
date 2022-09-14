@@ -6,15 +6,15 @@ import "./styles.css";
 import Modal from "./Modal";
 
 function App() {
-  const [isShowModal, setIsShowModal] = React.useState(true);
+  const [open, setOpen] = React.useState(true);
 
   return (
     <div className="App">
       <h2>Click here to open modal</h2>
-      <button type="button" onClick={() => setIsShowModal(!isShowModal)}>
+      <button type="button" onClick={() => setOpen(!open)}>
         Open
       </button>
-      <Modal isShow={isShowModal} onCancel={() => setIsShowModal(false)} />
+      <Modal open={open} onClose={() => setOpen(false)} />
     </div>
   );
 }
